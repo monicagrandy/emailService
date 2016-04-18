@@ -23,8 +23,8 @@ app.post("/email", function(req, res){
   var messageBody = req.body.msgBody;
 
   var mailOptions = {
-      from: userEmail, // sender address
-      to: recipientEmail, // list of receivers
+      from: userEmail, 
+      to: recipientEmail, 
       subject: subject,
       text: messageBody,
       html: '<p>' +messageBody+ '</p>'
@@ -32,7 +32,7 @@ app.post("/email", function(req, res){
 
   var auth = {
     auth: {
-      api_key: config.mg_api_key, //mailgun
+      api_key: config.mg_api_key, 
       domain: config.mg_domain
     }
   }
@@ -45,7 +45,7 @@ app.post("/email", function(req, res){
         console.log("switching to sendgrid");
         var fallbackAuth = {
           auth: {
-            api_user: config.sendgrid_api_user, //mailgun
+            api_user: config.sendgrid_api_user, 
             api_key: config.sendgrid_api_key
           }
         }

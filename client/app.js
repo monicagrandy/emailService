@@ -24,16 +24,17 @@ window.EmailService = Backbone.View.extend({
     e.preventDefault();
     console.log("getting input fields");
     var $name = this.$el.find('.username');
-    var $ToEmailAddress = this.$el.find('.recipientEmailAddress');
-    console.log("line 28: ", $ToEmailAddress.val())
-    var $FromEmailAddress = this.$el.find('.userEmailAddress');
+    var $toEmailAddress = this.$el.find('.recipientEmailAddress');
+    var $emailSubject = this.$el.find('.subject');
+    var $fromEmailAddress = this.$el.find('.userEmailAddress');
     var $emailBody = this.$el.find('.msgText');
-    var newEmail = new EmailService.Email({ name: $name.val(), to: $ToEmailAddress.val(), from: $FromEmailAddress.val(), msgBody: $emailBody.val() });
+    var newEmail = new EmailService.Email({ name: $name.val(), subject: $emailSubject.val(), to: $toEmailAddress.val(), from: $fromEmailAddress.val(), msgBody: $emailBody.val() });
     console.log("line 24: ", newEmail)
     newEmail.save()
     $name.val('');
-    $ToEmailAddress.val('');
-    $FromEmailAddress.val('');
+    $toEmailAddress.val('');
+    $fromEmailAddress.val('');
+    $emailSubject.val('');
     $emailBody.val('');
 }
 

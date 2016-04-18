@@ -19,13 +19,13 @@ app.post("/email", function(req, res){
   var userEmail = req.body.to;
   var recipientEmail = req.body.from;
   var userName = req.body.name;
+  var subject = req.body.subject;
   var messageBody = req.body.msgBody;
-
 
   var mailOptions = {
       from: userEmail, // sender address
       to: recipientEmail, // list of receivers
-      subject: 'Hello ' + userName,
+      subject: subject,
       text: messageBody,
       html: '<p>' +messageBody+ '</p>'
   }
@@ -57,11 +57,13 @@ app.post("/email", function(req, res){
             }
             else {
               console.log('Message sent from sendgrid: ' + info);
+              return;
             }
         })
       }
       else {
         console.log("Message sent from mailgun: ", response);
+        return;
       }
   });
 });

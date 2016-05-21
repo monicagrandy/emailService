@@ -6,6 +6,7 @@ var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
 var sgTransport = require('nodemailer-sendgrid-transport');
 var mg = require('nodemailer-mailgun-transport');
+var port =  process.env.PORT || 4568
 
 
 app.use(bodyParser.json());
@@ -67,4 +68,4 @@ app.post("/email", function(req, res){
 });
 
 console.log('EmailService is listening on 4568');
-app.listen(4568);
+app.listen(port);
